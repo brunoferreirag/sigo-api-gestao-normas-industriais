@@ -15,11 +15,11 @@ spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux
       containers:
-      - name: sigo-normas-industriais
+      - name: sigo-normas
         image: docker.io/brunoferreirag/sigo-api-gestao-normas-industriais:latest
         ports:
         - containerPort: 8006
-          name: sigo-normas-industriais
+          name: sigo-normas
         resources:
           requests:
             memory: "128Mi"
@@ -35,7 +35,7 @@ metadata:
 spec:
   type: LoadBalancer 
   ports:
-    - name: sigo-normas-industriais
+    - name: sigo-normas
       protocol: TCP
       port: 8006
   selector:
