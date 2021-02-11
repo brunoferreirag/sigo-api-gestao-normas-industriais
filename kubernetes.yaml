@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sigo-api-gestao-normas-industriais
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sigo-api-gestao-normas-industriais
+  template:
+    metadata:
+      labels:
+        app: sigo-api-gestao-normas-industriais
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: sigo-api-gestao-normas-industriais
+        image: docker.io/brunoferreirag/sigo-api-gestao-normas-industriais:latest
+        ports:
+        - containerPort: 8006
+          name: sigo-normas-industriais
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "10m"
+          limits:
+            memory: "256Mi"
+            cpu: "256m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sigo-api-gestao-normas-industriais
+spec:
+  type: LoadBalancer 
+  ports:
+    - name: sigo-normas-industriais
+      protocol: TCP
+      port: 8006
+  selector:
+    app: sigo-api-gestao-normas-industriais  
+---

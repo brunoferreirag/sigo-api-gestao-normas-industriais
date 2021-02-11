@@ -1,0 +1,3 @@
+name: sigo-api-gestao-normas-industriais
+deploy:
+  - kubectl apply -f kubernetes.yaml
