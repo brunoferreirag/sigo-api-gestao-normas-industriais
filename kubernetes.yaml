@@ -15,7 +15,7 @@ spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux
       containers:
-      - name: sigo-api-gestao-normas-industriais
+      - name: sigo-normas-industriais
         image: docker.io/brunoferreirag/sigo-api-gestao-normas-industriais:latest
         ports:
         - containerPort: 8006
