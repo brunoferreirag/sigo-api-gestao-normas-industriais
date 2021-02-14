@@ -1,12 +1,12 @@
 package br.com.indtextbr.services.gestaonormasindustriais.model;
 
-import com.azure.spring.data.cosmos.core.mapping.Container;
-import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 import br.com.indtextbr.services.gestaonormasindustriais.common.Status;
 import lombok.*;
 import org.springframework.data.annotation.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Instant;
 
@@ -20,7 +20,8 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@Container(containerName = "norma-industrial")
+@Document(value="norma-industrial")
+@JsonRootName("norma-industrial")
 public class NormaIndustrial {
 
 	@Id
@@ -59,7 +60,6 @@ public class NormaIndustrial {
 	@Size(min = 0, max = 3, message = "Versão deve ter no máximo 3 caracteres")
 	private String versao;
 
-	@PartitionKey
 	@JsonProperty("titulo")
 	@NotNull
 	@NotBlank(message = "Título deve ser preenchido")

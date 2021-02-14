@@ -2,16 +2,15 @@ package br.com.indtextbr.services.gestaonormasindustriais.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-
-import com.azure.spring.data.cosmos.repository.CosmosRepository;
 
 import br.com.indtextbr.services.gestaonormasindustriais.common.Status;
 import br.com.indtextbr.services.gestaonormasindustriais.model.NormaIndustrial;
 
 
 @Repository
-public interface NormaIndustrialRepository extends CosmosRepository<NormaIndustrial, String> {
+public interface NormaIndustrialRepository extends MongoRepository<NormaIndustrial, String> {
 	Page<NormaIndustrial> findByStatus(Status status,Pageable request);
 	
 	Page<NormaIndustrial> findByCodigoContainsAndTituloContainsAndVersaoContainsAndStatus(String codigo,  String titulo, String versao,  Status status, Pageable request);
