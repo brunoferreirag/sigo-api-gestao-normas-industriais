@@ -24,6 +24,7 @@ public class NormaIndustrialService {
 	
 	public NormaIndustrial criarNormaIndustrial(NormaIndustrial normaIndustrial) {
 		normaIndustrial.setStatus(Status.EM_VIGOR);
+		normaIndustrial.setId(java.util.UUID.randomUUID().toString());
 		return this.repository.save(normaIndustrial);
 	}
 	
