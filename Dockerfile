@@ -5,7 +5,7 @@ COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
-
+RUN ["chmod", "u+x", "mvnw"]
 EXPOSE 8006
 
 RUN ./mvnw install -DskipTests
