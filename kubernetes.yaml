@@ -33,7 +33,6 @@ kind: Service
 metadata:
   name: sigo-api-gestao-normas-industriais
 spec:
-  type: LoadBalancer 
   ports:
     - name: sigo-normas
       protocol: TCP
