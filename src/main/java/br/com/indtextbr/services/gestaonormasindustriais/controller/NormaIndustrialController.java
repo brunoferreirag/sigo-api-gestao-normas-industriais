@@ -66,7 +66,7 @@ public class NormaIndustrialController {
 	}
 	
 	@DeleteMapping(value="/{id}",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> inativarNormaIndustrial(@PathVariable(value="id") String id) {
+	public ResponseEntity<Void> excluirNormaIndustrial(@PathVariable(value="id") String id) {
 		this.service.excluirNormaIndustrial(id);
 		return ResponseEntity.noContent().build();
 	}
