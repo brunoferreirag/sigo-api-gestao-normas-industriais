@@ -46,7 +46,7 @@ public class NormaIndustrialController {
 	}
 	
 	@GetMapping(value="/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<NormaIndustrial> getNormaIndustrialById(@PathVariable(value="id") String id) {
+	public ResponseEntity<NormaIndustrial> getNormaIndustrialById(@PathVariable(value="id") Long id) {
 		var normaIndustrial = this.service.getById(id);
 		return new ResponseEntity<>(normaIndustrial, (normaIndustrial == null) ? HttpStatus.NOT_FOUND : HttpStatus.OK);
 	}
@@ -59,20 +59,20 @@ public class NormaIndustrialController {
 	}
 	
 	@PutMapping(value="/{id}",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<NormaIndustrial> editarNormaIndustrial(@PathVariable(value="id") String id, @RequestBody @Valid NormaIndustrial normaIndustrial) {
+	public ResponseEntity<NormaIndustrial> editarNormaIndustrial(@PathVariable(value="id") Long id, @RequestBody @Valid NormaIndustrial normaIndustrial) {
 		normaIndustrial.setId(id);
 		NormaIndustrial normaIndustrialEditada = this.service.editarNormaIndustrial(normaIndustrial);
 		return new ResponseEntity<>(normaIndustrialEditada, (normaIndustrialEditada == null) ? HttpStatus.NOT_FOUND : HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value="/{id}",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> excluirNormaIndustrial(@PathVariable(value="id") String id) {
+	public ResponseEntity<Void> excluirNormaIndustrial(@PathVariable(value="id") Long id) {
 		this.service.excluirNormaIndustrial(id);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@GetMapping(value="busca",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Page<NormaIndustrial> pesquisarNormasIndustriais(@RequestParam(value="codigo", required=false)String codigo, @RequestParam(value="titulo",required=false)String titulo, @RequestParam(value="versao",required=false)String versao, @RequestParam(name = "page", defaultValue = "0") int page,
+	public Page<NormaIndustrial> pesquisarNormasIndustriais(@RequestParam(value="codigo", required=false)String codigo, @RequestParam(value="titulo",required=false)String titulo, @RequestParam(value="versao",required=false)Integer versao, @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size) {
 		PageRequest pageRequest = PageRequest.of(page, size);
 		var  normasIndustriais = this.service.pesquisarNormasIndustriais(codigo, titulo, versao, pageRequest);

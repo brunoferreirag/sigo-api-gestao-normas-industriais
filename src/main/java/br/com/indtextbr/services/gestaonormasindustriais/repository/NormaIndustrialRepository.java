@@ -2,28 +2,26 @@ package br.com.indtextbr.services.gestaonormasindustriais.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.indtextbr.services.gestaonormasindustriais.common.Status;
 import br.com.indtextbr.services.gestaonormasindustriais.model.NormaIndustrial;
 
 
 @Repository
-public interface NormaIndustrialRepository extends MongoRepository<NormaIndustrial, String> {
-	Page<NormaIndustrial> findByStatus(Status status,Pageable request);
+public interface NormaIndustrialRepository extends JpaRepository<NormaIndustrial, Long> {
 	
-	Page<NormaIndustrial> findByCodigoContainsAndTituloContainsAndVersaoContainsAndStatus(String codigo,  String titulo, String versao,  Status status, Pageable request);
+	Page<NormaIndustrial> findByCodigoLikeAndTituloLikeAndVersao(String codigo,  String titulo, Integer versao,  Pageable request);
 	
-	Page<NormaIndustrial> findByCodigoContainsAndTituloContainsAndStatus(String codigo,  String titulo, Status status, Pageable request);
+	Page<NormaIndustrial> findByCodigoLikeAndTituloLike(String codigo,  String titulo,  Pageable request);
 	
-	Page<NormaIndustrial> findByCodigoContainsAndVersaoContainsAndStatus(String codigo,  String versao, Status status, Pageable request);
+	Page<NormaIndustrial> findByCodigoLikeAndVersao(String codigo,  Integer versao, Pageable request);
 	
-	Page<NormaIndustrial> findByTituloContainsAndVersaoContainsAndStatus(String titulo,  String versao, Status status, Pageable request);
+	Page<NormaIndustrial> findByTituloLikeAndVersao(String titulo,  Integer versao, Pageable request);
 	
-	Page<NormaIndustrial> findByCodigoContainsAndStatus(String codigo, Status status, Pageable request);
+	Page<NormaIndustrial> findByCodigoLike(String codigo, Pageable request);
 	
-	Page<NormaIndustrial> findByTituloContainsAndStatus(String titulo, Status status, Pageable request);
+	Page<NormaIndustrial> findByTituloLike(String titulo,  Pageable request);
 	
-	Page<NormaIndustrial> findByVersaoContainsAndStatus(String versao, Status status, Pageable request);
+	Page<NormaIndustrial> findByVersao(Integer versao, Pageable request);
 }
