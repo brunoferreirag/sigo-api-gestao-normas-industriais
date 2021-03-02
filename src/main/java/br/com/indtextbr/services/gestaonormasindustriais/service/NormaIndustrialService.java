@@ -60,28 +60,28 @@ public class NormaIndustrialService {
 	public Page<NormaIndustrial> pesquisarNormasIndustriais(String codigo, String titulo,Integer versao, PageRequest page){
 		if(codigo!=null || titulo!=null || versao!=null) {
 			if(codigo!=null && titulo ==null && versao ==null) {
-				return this.repository.findByCodigoLike(codigo, page);
+				return this.repository.findByCodigoContains(codigo, page);
 			}
 			else if (codigo==null && titulo !=null && versao ==null) {
-				return this.repository.findByTituloLike(titulo, page);
+				return this.repository.findByTituloContains(titulo, page);
 			}
 			else if (codigo==null && titulo ==null && versao !=null) {
 				return this.repository.findByVersao(versao, page);
 			}
 			else if (codigo!=null && titulo !=null && versao ==null) {
-				return this.repository.findByCodigoLikeAndTituloLike(codigo, titulo, page);
+				return this.repository.findByCodigoContainsAndTituloContains(codigo, titulo, page);
 			}
 			
 			else if (codigo!=null && titulo ==null && versao !=null) {
-				return this.repository.findByCodigoLikeAndVersao(codigo, versao, page);
+				return this.repository.findByCodigoContainsAndVersao(codigo, versao, page);
 			}
 			
 			else if (codigo==null && titulo !=null && versao !=null) {
-				return this.repository.findByTituloLikeAndVersao(titulo, versao, page);
+				return this.repository.findByTituloContainsAndVersao(titulo, versao, page);
 			}
 			
 			
-			return this.repository.findByCodigoLikeAndTituloLikeAndVersao(codigo, titulo, versao, page);
+			return this.repository.findAll(page);
 		}
 		
 		return this.repository.findAll(page);
