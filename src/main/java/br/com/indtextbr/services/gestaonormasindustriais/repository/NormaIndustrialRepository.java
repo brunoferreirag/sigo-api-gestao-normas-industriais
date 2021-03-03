@@ -30,6 +30,7 @@ public class NormaIndustrialRepository {
 		HttpHeaders requestHeaders = new HttpHeaders();
 		requestHeaders.set("Authorization", "Bearer "+"");
 		requestHeaders.add("Accept", MediaType.APPLICATION_JSON_VALUE);
+		requestHeaders.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
 		HttpEntity<NormaIndustrial> httpEntity = new HttpEntity<>(requestHeaders);
 		ParameterizedTypeReference<NormaIndustrial>  tipoResposta = new ParameterizedTypeReference<NormaIndustrial>() {};
 		String urlFinal = this.enderecoApi + "/" + id;
@@ -41,6 +42,7 @@ public class NormaIndustrialRepository {
 		HttpHeaders requestHeaders = new HttpHeaders();
 		requestHeaders.set("Authorization", "Bearer "+"");
 		requestHeaders.add("Accept", MediaType.APPLICATION_JSON_VALUE);
+		requestHeaders.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
 		HttpEntity<String> httpEntity = new HttpEntity<>(requestHeaders);
 		ParameterizedTypeReference<String>  tipoResposta = new ParameterizedTypeReference<String>() {};
 		StringBuilder sb = new StringBuilder();
