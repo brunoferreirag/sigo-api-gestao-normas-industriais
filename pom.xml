@@ -16,7 +16,7 @@
 	<description>Micro serviço de gestão de normas industriais</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>15</java.version>
 		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
 	</properties>
 
